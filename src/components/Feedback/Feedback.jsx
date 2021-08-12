@@ -5,10 +5,11 @@ export const Feedback = ({ options, onAddFeedback }) => {
   return (
     <div>
       <h2>Please leave feedback</h2>
-      {options.map(option => (
+      {Object.keys(options).map(option => (
         <CustomButton
           key={option}
           type="button"
+          name={option}
           onClick={() => onAddFeedback(option)}
         >
           {option}
@@ -19,6 +20,6 @@ export const Feedback = ({ options, onAddFeedback }) => {
 };
 
 Feedback.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  onLeaveFeedback: PropTypes.func,
+  options: PropTypes.object.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
